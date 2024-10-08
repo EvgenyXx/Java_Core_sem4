@@ -1,7 +1,7 @@
 package com.evgenypavlov.spring;
 
 
-
+import static java.lang.StringTemplate.STR;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class Main {
 
         // Создаем массив сотрудников
         Employee[] employees = {employee1, employee2, employee3, employee4};
-        String holiday = "";
+        String holiday = "NEW_YEAR";
 
         // Вызываем метод поздравления
         congratulateEmployees(employees,holiday);
@@ -33,13 +33,13 @@ public class Main {
 
         for (Employee employee : employees){
             if (holiday.equals("NEW_YEAR")) {
-                System.out.println("С Новым Годом, " + employee.getName() + "!");
+                System.out.println(STR."С Новым Годом, \{employee.getName()}!");
                 LoggerMain.info("поздравление с нг отработало успешно ");
             } else if (holiday.equals("MARCH_8") && employee.getGender() == Gender.FEMALE) {
-                System.out.println("С 8 марта, " + employee.getName() + "!");
+                System.out.println(STR."С 8 марта, \{employee.getName()}!");
                 LoggerMain.info("поздравление с 8 марта отработало успешно ");
             } else if (holiday.equals("FEBRUARY_23") && employee.getGender() == Gender.MALE) {
-                System.out.println("С 23 февраля, " + employee.getName());
+                System.out.printf(STR."С 23 февраля, \{employee.getName()}%n");
                 LoggerMain.info("поздравление с 23 февраля отработало успешно ");
             }else {
                 System.out.println("в этот день нет ни каких праздников");
